@@ -1,3 +1,9 @@
 factures/*
 photos/*
 inv_stud-test.sqlite3
+db.dump
+export.csv
+inv_stud.log
+nohup.out
+__pycache__
+__pycache__/*
