@@ -1,6 +1,6 @@
 factures/*
 photos/*
-inv_stud-test.sqlite3
+inv_stud-test.sqlite3*
 db.dump
 export.csv
 inv_stud.log
