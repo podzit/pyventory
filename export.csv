@@ -1,0 +1,69 @@
+ID, Marque, Ref, Nb, Prix, Date d'achat, Argus, Date dernier argus, Facture, Photo, Type, Numéro de série, Commentaire, En vente
+1,Yamaha,HS5,2,139.0,23-08-2017,175.0,04-07-2024,hs5.pdf,hs5.jpg,Enceintes,,,oui
+2,Native Instrument,Komplete Kontrol S49 MK2,1,499.0,24-08-2020,398.0,04-07-2024,komplete.pdf,komplete.jpg,Clavier,946JQ-FE6AB-TW051-2X83N-K3NZY,,oui
+3,Golden Age Audio,Premier PRE-73 DLX,1,584.0,24-08-2020,639.0,04-07-2024,ga-dlx.pdf,ga-dlx.jpg,Préampli,00061,,oui
+4,Numark,Mixtrack pro 2,1,187.0,01-12-2014,85.0,04-07-2024,mixtrack.pdf,mixtrack.jpg,Controleur,N31403912280729,,oui
+5,Akaï,MPK mini MKII,1,99.0,13-08-2016,99.0,04-07-2024,mpk.pdf,mpk.jpg,Clavier,(21)A31604155945356,,oui
+6,Golden Age Audio,Premier PRE-73,2,479.0,04-01-2023,485.0,04-07-2024,ga-pre73-2.pdf,ga-pre73-2.jpg,Préampli,02324/02328,,oui
+7,MXR,Phase 90,1,105.0,28-10-2013,119.0,04-07-2024,mxr90.pdf,mxr90.jpg,Pédale,,,oui
+8,Neumann,TLM103,1,975.0,18-11-2019,1039.0,04-07-2024,neumann.pdf,neumann.jpg,Micro,,Déclaré à lassurance,oui
+9,Novation,Launchcontrol XL MK2,1,170.0,13-11-2022,159.0,04-07-2024,novation.pdf,novation.jpg,Controleur,,,oui
+10,TC Electronic,Corona mini,1,79.0,24-02-2021,79.0,04-07-2024,corona.pdf,corona.jpg,Pédale,,,oui
+11,MXR,Dynacomp mini,1,124.0,24-02-2021,139.0,04-07-2024,dynacomp.pdf,dynacomp.jpg,Pédale,,,oui
+12,Mooer,Noise killer,1,59.0,24-02-2021,66.0,04-07-2024,mooer.pdf,mooer.jpg,Pédale,,,oui
+13,Harley Benton,PowerPlant ISO-12 Pro,1,98.0,24-02-2021,98.0,04-07-2024,powerplant.pdf,powerplant.jpg,Pédale,,,oui
+14,Wampler,Tumnus overdrive V2,1,149.0,24-02-2021,147.0,04-07-2024,tumnus.pdf,tumnus.jpg,Pédale,,,oui
+15,MXR,M290 Phase 95,1,119.0,24-02-2021,128.0,04-07-2024,phase95.pdf,phase95.jpg,Pédale,,,oui
+16,TC Electronic,Polytune 3 mini,1,68.0,24-02-2021,85.0,04-07-2024,polytune.pdf,polytune.jpg,Pédale,,,oui
+17,Mad professor,Supreme dual overdrive,1,249.0,10-08-2021,279.0,04-07-2024,supreme.pdf,supreme.jpg,Pédale,,,oui
+18,Mooer,R7 Reverb,1,96.0,10-08-2021,89.0,04-07-2024,r7.pdf,r7.jpg,Pédale,,,oui
+19,Dunlop,Cry Baby Mini 535Q Auto Return,1,179.0,10-08-2021,199.0,04-07-2024,mini535q.pdf,mini535q.jpg,Pédale,,,oui
+20,Millenium,RW-2001,1,52.8,18-08-2021,66.0,04-07-2024,rack.pdf,rack.pdf,Rack,,,oui
+21,Behringer,ECM8000,1,36.0,06-10-2020,35.0,04-07-2024,mesure.pdf,mesure.jpg,Micro,,,oui
+22,Rocktron,Hush 2X,1,139.0,06-10-2020,77.5,04-07-2024,hush.pdf,hush.jpg,Pédale,,,non
+23,Fender,Multi Guitar Stand 5,1,59.0,02-02-2016,59.0,04-07-2024,stand.pdf,stand.jpg,Rack,,,oui
+24,Audio Technica,ATH-M30X,1,73.0,02-02-2016,69.0,04-07-2024,ath.pdf,ath.jpg,Casque,,,oui
+25,The t.bone,SC 140 Stereo set,1,105.0,08-04-2016,99.0,04-07-2024,sc140.pdf,sc140.jpg,Micro,,,oui
+26,TC Helicon,Voicelive Play,1,225.0,28-10-2013,259.0,04-07-2024,voicelive.pdf,voicelive.jpg,Pédale,,,oui
+27,Audio Technica,AT 4033,1,424.0,17-02-2014,399.0,04-07-2024,at4033.pdf,at4033.jpg,Micro,,,oui
+28,Griffon-microphones,Fuzzyphone,1,120.0,31-08-2020,125.0,04-07-2024,fuzzy.pdf,fuzzy.jpg,Micro,,,oui
+29,Microrocco,RM1-B,1,54.0,07-07-2017,0.0,NULL,rm1.pdf,rm1.jpg,Micro,,,non
+30,Westfinga engineering,WF Filter,1,360.0,24-09-2019,389.0,04-07-2024,hpf.pdf,hpf.jpg,Filtre,,,oui
+31,Westfinga engineering,Rubaddrum V1,1,89.0,07-09-2020,59.0,04-07-2024,rubaddrum.pdf,,Licence logiciel,,V2 disponible,oui
+32,Boss,RE-20,1,250.0,,177.0,04-07-2024,,re20.jpg,Pédale,,,non
+33,Golden Age Audio,R1 ST,1,548.0,14-06-2023,589.0,04-07-2024,ga-r1-st.pdf,ga-r1-st.jpg,Micro,22019,,oui
+34,Hofa,CD Burn DDP Master,1,74.0,02-09-2020,84.0,04-07-2024,hofa.pdf,,Licence logiciel,,,oui
+35,Golden Age Audio,Premier PRE-73,1,479.0,16-07-2019,485.0,04-07-2024,ga-pre73.pdf,ga-pre73.jpg,Préampli,00865,,oui
+36,Focusrite,Scarlett2 18i20,1,495.19,28-02-2016,278.06,05-07-2024,scarlett.pdf,scarlett.jpg,Carte son,,Remplacé à la vente par la 3,non
+37,TC Electronic,Flashback,1,135.0,28-05-2014,71.69,05-07-2024,flashback.pdf,flashback.jpg,Pédale,,,oui
+38,Palmer,MI Pedalbay 40,1,73.0,26-09-2014,66.0,05-07-2024,palmer.pdf,palmer.jpg,Pedalboard,,,oui
+39,TC Electronic,The dreamscape,1,168.0,26-09-2014,159.0,05-07-2024,dreamscape.pdf,dreamscape.jpg,Pédale,,,oui
+40,DBX,166XS,1,155.0,30-04-2018,85.23,05-07-2024,dbx.pdf,dbx.jpg,Compresseur,12001786207,,non
+41,Steinberg,Cubase artist 10,1,154.5,23-05-2019,157.5,05-07-2024,cubase10.pdf,,Licence logiciel,,,non
+42,Steinberg,Cubase pro 11,1,159.0,28-04-2021,274.63,05-07-2024,cubase11.pdf,,Licence logiciel,,,non
+43,Dunlop,Cry Baby CB-535Q,1,149.0,16-01-2012,198.0,05-07-2024,cb535q.pdf,cb535q.jpg,Pédale,,,oui
+44,Sennheiser,E906,1,179.0,04-12-2015,175.0,05-07-2024,e906.pdf,e906.jpg,Micro,,,oui
+45,ART,Pro MPA II,1,359.0,03-02-2016,555.0,05-07-2024,mpa2.pdf,mpa2.jpg,Préampli,,,oui
+46,Digital sound,Level meter 8928,1,45.6,21-05-2021,44.0,05-07-2024,decibelmetre.pdf,decibelmetre.jpg,Decibelmetre,3138630,,oui
+47,Mackie,HM-400,1,178.8,21-05-2021,189.0,05-07-2024,mackie.pdf,mackie.jpg,Ampli casque,,,oui
+48,Adam Audio,A5X,2,355.45,04-04-2017,438.94,05-07-2024,adam-a5x.pdf,adam-a5x.jpg,Enceintes,,,oui
+49,Samson Technologies,S-amp,1,80.0,26-02-2004,22.11,05-07-2024,samp.pdf,samp.jpg,Ampli casque,,,non
+50,Samson Technologies,S-Direct SD100,1,35.95,11-12-2003,26.39,05-07-2024,sd100.pdf,sd100.jpg,DI,,,non
+51,Samson Technologies,C01,1,144.9,22-01-2004,67.0,05-07-2024,c01m.pdf,c01m.jpg,Micro,,,oui
+52,Presonus,TubePre,1,150.0,12-02-2004,62.72,05-07-2024,presonus.pdf,presonus.jpg,Préampli,TP1-3110592,,non
+53,K&M,23956 PopKiller,1,35.0,05-12-2003,21.9,05-07-2024,antipop.pdf,antipop.jpg,Filtre anti pop,,,oui
+54,Yamaha,MG12/4,1,190.0,05-12-2003,127.9,05-07-2024,yamaha-12-4.pdf,yamaha-12-4.jpg,Table de mixage,JO03428,,non
+55,Boss,OD-3 Overdrive,1,117.2,18-09-2013,118.0,05-07-2024,od-3.pdf,od-3.jpg,Pédale,L3C8050,,oui
+56,Peavey,Classic 30,1,598.0,20-02-2010,442.5,05-07-2024,peavey.pdf,peavey.jpg,Ampli guitare,003AJI0808774,,non
+57,Beyerdynamic,DT770 Pro 250 Ohm,1,165.0,28-08-2013,139.0,05-07-2024,dt770.pdf,dt770.jpg,Casque,,,oui
+58,Squier,JBASS,1,319.0,08-01-2016,0.0,,squier.pdf,squier.jpg,Basse,CY141007315,Argus introuvable,non
+59,Epiphone,LP100,1,380.0,19-07-2013,0.0,,epiphone.pdf,epiphone.jpg,Guitare,S4101659,Argus introuvable,non
+60,Gibson,LesPaul Studio Premium Plus,1,1519.0,07-02-2008,1263.33,05-07-2024,gibson.pdf,gibson.jpg,Guitare,17370673,,non
+61,Charvel,,1,0.0,,0.0,,,charvel.jpg,Guitare,288222,Peu dinfos sur cette guitare,non
+62,Alabama,SP-20,1,203.82,09-03-2021,0.0,,alabama.pdf,alabama.jpg,Guitare,,Argus introuvable,non
+63,Yamaha,MG166C-USB,1,350.0,01-01-1970,200.0,08-07-2024,,mg166c.jpg,Table de mixage,ECRM01073,,non
+64,Shure,8700,1,0.0,01-01-1970,0.0,,,8700.jpg,Micro,,Argus introuvable,non
+65,Zoom,H1,1,100.0,01-01-1970,61.0,08-07-2024,,zoomh1.jpg,Enregistreur,B71117503,,non
+66,Shure,SM58,2,120.0,01-01-1970,107.0,08-07-2024,,sm58.jpg,Micro,,,oui
+67,AKG,D880S,1,0.0,01-01-1970,0.0,,,d880s.jpg,Micro,,Argus introuvable,non
+71,test,doifjdoisfj,1,159.0,05-07-2024,140.0,05-07-2024,,,test,123456,dsfdsf,oui
