@@ -30,7 +30,7 @@ if LANGUAGE == 'fr':
     "dialog_calendar_close": "Fermer",
     "dialog_argus": "Argus",
     "dialog_argus_date": "Date argus",
-    "dialog_bill": "Facture",
+    "dialog_invoice": "Facture",
     "dialog_picture": "Photo",
     "dialog_serial": "Numéro de série",
     "dialog_shop": "Toujours en vente",
@@ -48,8 +48,17 @@ if LANGUAGE == 'fr':
     "logging_add_info": "Ajout de",
     "logging_update_info": "Mise à jour de",
     "logging_update_argus": "Nouvel argus pour ",
+    "logging_delete_info": "Suppression de",
     "csv_shop_yes": "oui",
-    "csv_shop_no": "non"
+    "csv_shop_no": "non",
+    "database_created": "Base de donnée créée avec succès !",
+    "database_exists": "La base de donnée existe déjà",
+    "database_creation_failed": "La création de la base de donnée a échoué avec l'errueur suivante :",
+    "auto_save_ok": "Sauvegarde de la base de donnée réussie !",
+    "auto_save_failed": "La sauvegarde de la base de donnée a échouée avec l'erreur suivante :",
+    "old_backup_removed": "La sauvegarde datant de 15 ajours a été supprimée",
+    "import_data_ok": "Import des données effectué !",
+    "import_data_failed": "Import des données échoué avec l'erreur suivante :"
     }
 if LANGUAGE == 'eng':
     text = {
@@ -61,7 +70,7 @@ if LANGUAGE == 'eng':
     "column6": "Purchase date", 
     "column7": "Argus", 
     "column8": "Argus date", 
-    "column9": "Bill", 
+    "column9": "Invoice", 
     "column10": "Picture", 
     "column11": "Type", 
     "column12": "Serial", 
@@ -81,7 +90,7 @@ if LANGUAGE == 'eng':
     "dialog_calendar_close": "Close",
     "dialog_argus": "Argus",
     "dialog_argus_date": "Argus date",
-    "dialog_bill": "Bill",
+    "dialog_invoice": "Invoice",
     "dialog_picture": "Picture",
     "dialog_serial": "Serial",
     "dialog_shop": "Still avalaible",
@@ -99,6 +108,15 @@ if LANGUAGE == 'eng':
     "logging_add_info": "Inserted",
     "logging_update_info": "Updated",
     "logging_update_argus": "New argus for ",
+    "logging_delete_info": "Removed",
     "csv_shop_yes": "yes",
-    "csv_shop_no": "no"
+    "csv_shop_no": "no",
+    "database created": "Database created successfully !",
+    "database_exists": "Database already exists",
+    "database_creation_failed": "Database creation failed with error :",
+    "auto_save_ok": "Database saved successfully !",
+    "auto_save_failed": "Save database failed with error :",
+    "old_backup_removed": "15 days old backup file was removed",
+    "import_data_ok": "Data imported successfully !",
+    "import_data_failed": "Import failed with error :"
     }

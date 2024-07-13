@@ -1,24 +1,26 @@
 import logging, os
 
 this_folder = os.path.dirname(__file__)
-DB = os.path.join(this_folder, 'inv_stud-test.sqlite3')
+DB = os.path.join(this_folder, 'pyventory.sqlite3')
 TABLE = 'gear'
 # Server IP
 HOST = '192.168.1.2'
 PORT = 8091
-FACT_LINK = 'factures'
-PHOTO_LINK = 'photos'
+INVOICE_LINK = 'invoices'
+PICTURE_LINK = 'pictures'
 LOCAL_DIR = this_folder
 DUMP_FILE = os.path.join(this_folder,'db.dump')
 EXPORT_FILE = os.path.join(this_folder,'export.csv')
-FACT_TMP = os.path.join(this_folder,'fact_tmp')
-PHOTO_TMP = os.path.join(this_folder,'photo_tmp')
-FACT_DIR = os.path.join(LOCAL_DIR,FACT_LINK)
-PHOTO_DIR = os.path.join(LOCAL_DIR,PHOTO_LINK)
+INVOICE_TMP = os.path.join(this_folder,'invoice_tmp')
+PICTURE_TMP = os.path.join(this_folder,'picture_tmp')
+INVOICE_DIR = os.path.join(LOCAL_DIR,INVOICE_LINK)
+PICTURE_DIR = os.path.join(LOCAL_DIR,PICTURE_LINK)
 # 'fr' or 'eng'
 LANGUAGE = 'fr'
 
 logging.basicConfig(
-    filename=os.path.join(this_folder,'inv_stud.log'),
-    level= logging.WARNING
+    filename=os.path.join(this_folder,'pyventory.log'),
+    level= logging.WARNING,
+    format="%(asctime)s - %(levelname)s - %(filename)s: %(message)s",
+    datefmt="%d/%m/%Y - %H:%M"
 )

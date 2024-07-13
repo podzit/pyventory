@@ -1,4 +1,5 @@
 from constantes import logging, DB
+from languages import *
 import sqlite3, os
 
 def create_db():
@@ -13,13 +14,13 @@ def create_db():
                 id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE,
                 brand TEXT NOT NULL,
                 ref TEXT NOT NULL,
-                nb INTEGER NOT NULL DEFAULT 1,
+                quantity INTEGER NOT NULL DEFAULT 1,
                 price REAL NOT NULL,
                 date TEXT NOT NULL DEFAULT '01/01/1970',
                 argus REAL,
                 last_argus TEXT,
-                fact TEXT,
-                photo TEXT,
+                invoice TEXT,
+                picture TEXT,
                 type TEXT NOT NULL,
                 serial TEXT,
                 comment TEXT,
@@ -28,14 +29,14 @@ def create_db():
             """
         )
     except Exception as e:
-        logging.error(e)
+        logging.error(f"{text['database_creation_failed']} {e}")
     finally:
         curseur.close()
         cnx.close()
 
 if __name__ == "__main__":
     if not os.path.exists(DB):
-        print('Création de la base')
+        logging.warning(text['database_created'])
         create_db()
     else:
-        print('La base existe déjà !')
+        logging.warning(text['database_exists'])

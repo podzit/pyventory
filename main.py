@@ -6,4 +6,4 @@ ui.query('body').classes('bg-gray-100')
 
 display()
 
-ui.run(host=HOST, port=PORT, title='INVENSTUD', uvicorn_reload_includes='*.py,*.log', favicon='🗃️')
+ui.run(host=HOST, port=PORT, title='Pyventory', uvicorn_reload_includes='*.py,*.log', favicon='🗃️')

@@ -6,7 +6,7 @@ class Product():
                  p_id:int,
                  brand:str,
                  ref:str,
-                 nb:int,
+                 quantity:int,
                  price:float,
                  date:str,
                  argus:float,
@@ -15,15 +15,15 @@ class Product():
                  serial:str,
                  comment:str,
                  shop:int,
-                 fact:str='',
-                 photo:str=''):
+                 invoice:str='',
+                 picture:str=''):
         """Create Product object
 
         Args:
             p_id (int): Product ID
             brand (str): Product brand
             ref (str): Product reference
-            nb (int): Product quantity
+            quantity (int): Product quantity
             price (float): Product price
             date (str): Product purchase date
             argus (float): Product argus
@@ -32,19 +32,19 @@ class Product():
             serial (str): Product serial number
             comment (str): Comment about product
             shop (int): Still available to sell ?
-            fact (str, optional): Bill filename. Defaults to ''.
-            photo (str, optional): Picture filename. Defaults to ''.
+            invoice (str, optional): Invoice filename. Defaults to ''.
+            picture (str, optional): Picture filename. Defaults to ''.
         """
         self.p_id = p_id
         self.brand = brand
         self.ref = ref
-        self.nb = nb
+        self.quantity = quantity
         self.price = price
         self.date = date
         self.argus = argus
         self.last_argus = last_argus
-        self.fact = fact
-        self.photo = photo
+        self.invoice = invoice
+        self.picture = picture
         self.p_type = p_type
         self.serial = serial
         self.comment = comment

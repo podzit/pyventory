@@ -1,4 +1,4 @@
-from constantes import DB, TABLE, logging, DUMP_FILE, EXPORT_FILE, FACT_TMP, PHOTO_TMP
+from constantes import DB, TABLE, logging, DUMP_FILE, EXPORT_FILE, INVOICE_TMP, PICTURE_TMP
 from languages import *
 from nicegui import ui
 import sqlite3, os, datetime
@@ -45,40 +45,20 @@ def get_by_id(p_id:int) -> list:
         curseur.close()
         cnx.close()        
 
-def get_all_type() -> list:
-    """Get all product types from 'gear' table
+def get_all(db_column:str) -> list:
+    """Get all data of a column from 'gear' table
+    
+    Args:
+        str: Column name in database
 
     Returns:
-        list: All product types from 'gear' table once
+        list: All column's data from 'gear' table once
     """
     content_filtered = []
     try:
         cnx = sqlite3.connect(DB)
         curseur = cnx.cursor()
-        sql = f"select type from {TABLE}"
-        curseur.execute(sql)
-        content = curseur.fetchall()
-        for c in content:
-            if c not in content_filtered:
-                content_filtered.append(c)
-        return content_filtered
-    except Exception as e:
-        logging.error(e)
-    finally:
-        curseur.close()
-        cnx.close()
-
-def get_all_brand() -> list:
-    """Get all product brands from 'gear' table
-
-    Returns:
-        list: All product brands from 'gear' table once
-    """
-    content_filtered = []
-    try:
-        cnx = sqlite3.connect(DB)
-        curseur = cnx.cursor()
-        sql = f"select brand from {TABLE}"
+        sql = f"select {db_column} from {TABLE}"
         curseur.execute(sql)
         content = curseur.fetchall()
         for c in content:
@@ -92,26 +72,26 @@ def get_all_brand() -> list:
         cnx.close()
 
 def tmp_read() -> tuple:
-    """Read temp file with bills and pictures name
+    """Read temp file with invoices and pictures name
 
     Returns:
-        tuple: fact (bill name), photo (picture name)
+        tuple: invoice (invoice name), picture (picture name)
     """
-    fact = ''
-    photo = ''
-    lst = [FACT_TMP,PHOTO_TMP]
+    invoice = ''
+    picture = ''
+    lst = [INVOICE_TMP,PICTURE_TMP]
     for l in lst:
         if os.path.exists(l):
             with open(l, mode='r') as f:
                 f.seek(0)
-                if l == FACT_TMP:
-                    fact = f.read()
-                if l == PHOTO_TMP:
-                    photo = f.read()
+                if l == INVOICE_TMP:
+                    invoice = f.read()
+                if l == PICTURE_TMP:
+                    picture = f.read()
             os.remove(l)
-    return fact, photo
+    return invoice, picture
 
-def insert(p_type, brand, ref:str, price:float, date:str, nb:int, argus:str, last_argus:str, shop:bool, dialog:object, serial:str=None, comment:str=None) -> None:
+def insert(p_type, brand, ref:str, price:float, date:str, quantity:int, argus:str, last_argus:str, shop:bool, dialog:object, serial:str=None, comment:str=None) -> None:
     """Add product into 'gear' table
 
     Args:
@@ -120,7 +100,7 @@ def insert(p_type, brand, ref:str, price:float, date:str, nb:int, argus:str, las
         ref (str): Product reference
         price (float): Product price
         date (str): Product purchase date
-        nb (int): Product quantity
+        quantity (int): Product quantity
         argus (str): Product argus
         last_argus (str): Product argus last check date
         shop (bool): Still available on sell ?
@@ -138,7 +118,7 @@ def insert(p_type, brand, ref:str, price:float, date:str, nb:int, argus:str, las
         ui.notify(text['notify_dialog_miss_mandatory'])
     else:
         dialog.close()
-        fact, photo = tmp_read()
+        invoice, picture = tmp_read()
         ui.notify(f"{brand} {ref} {text['notify_dialog_inserted']}")
         if shop:
             shop = 1
@@ -147,26 +127,25 @@ def insert(p_type, brand, ref:str, price:float, date:str, nb:int, argus:str, las
         try:
             cnx = sqlite3.connect(DB)
             curseur = cnx.cursor()
-            sql = f"insert into {TABLE} values (null,:brand,:ref,:nb,:price,:date,:argus,:last_argus,:fact,:photo,:type,:serial,:comment,:shop) "
+            sql = f"insert into {TABLE} values (null,:brand,:ref,:quantity,:price,:date,:argus,:last_argus,:invoice,:picture,:type,:serial,:comment,:shop) "
             params = {
                 'type': p_type,
                 'brand': brand,
                 'ref': ref,
-                'nb': nb,
+                'quantity': quantity,
                 'price': price,
                 'date': date,
                 'argus': argus,
                 'last_argus': last_argus,
-                'fact': fact,
-                'photo': photo,
+                'invoice': invoice,
+                'picture': picture,
                 'serial': serial,
                 'comment': comment,
                 'shop': shop
             }
             curseur.execute(sql, params)
             cnx.commit()
-            #logging.warning(f'Ajout de Type: {p_type}, Marque: {brand}, Ref: {ref}, Quantité: {nb}, Date: {date}, Argus: {argus}, Date argus: {last_argus}, Prix: {price}, Facture: {fact}, Photo: {photo}, Serial: {serial}, Comment: {comment}, En vente: {shop}')
-            logging.warning(f"{text['logging_add_info']} {text['column11']}: {p_type}, {text['column2']}: {brand}, {text['column3']}: {ref}, {text['column4']}: {nb}, {text['column5']}: {price}, {text['column6']}: {date}, {text['column7']}: {argus}, {text['column8']}: {last_argus}, {text['column9']}: {fact}, {text['column10']}: {photo}, {text['column11']}: {serial}, {text['column12']}: {comment}, {text['column13']}: {shop}")
+            logging.warning(f"{text['logging_add_info']} {text['column11']}: {p_type}, {text['column2']}: {brand}, {text['column3']}: {ref}, {text['column4']}: {quantity}, {text['column5']}: {price}, {text['column6']}: {date}, {text['column7']}: {argus}, {text['column8']}: {last_argus}, {text['column9']}: {invoice}, {text['column10']}: {picture}, {text['column11']}: {serial}, {text['column12']}: {comment}, {text['column13']}: {shop}")
         except Exception as e:
             cnx.rollback()
             logging.error(e)
@@ -174,7 +153,7 @@ def insert(p_type, brand, ref:str, price:float, date:str, nb:int, argus:str, las
             curseur.close()
             cnx.close()
 
-def update(p_id:int, p_type:str, brand:str, ref:str, nb:int, price:float, date:str, argus:float, last_argus:str, serial:str, comment:str, shop:bool, dialog:object) -> None:
+def update(p_id:int, p_type:str, brand:str, ref:str, quantity:int, price:float, date:str, argus:float, last_argus:str, serial:str, comment:str, shop:bool, dialog:object) -> None:
     """Update a product
 
     Args:
@@ -182,7 +161,7 @@ def update(p_id:int, p_type:str, brand:str, ref:str, nb:int, price:float, date:s
         p_type (str): Product type
         brand (str): Product brand
         ref (str): Product reference
-        nb (int): Product quantity
+        quantity (int): Product quantity
         price (float): Product price
         date (str): Product purchase date
         argus (float): Product argus
@@ -192,7 +171,7 @@ def update(p_id:int, p_type:str, brand:str, ref:str, nb:int, price:float, date:s
         shop (bool): Still available on sell ?
         dialog (object): Dialog box
     """
-    fact, photo = tmp_read()   
+    invoice, picture = tmp_read()   
     if p_type == '' or brand == '' or ref == '' or price == '' or date == '':
         ui.notify(text['notify_dialog_miss_mandatory'])
     else:
@@ -205,25 +184,25 @@ def update(p_id:int, p_type:str, brand:str, ref:str, nb:int, price:float, date:s
         try:
             cnx = sqlite3.connect(DB)
             curseur = cnx.cursor()
-            sql = f"update {TABLE} set ref=:ref,nb=:nb,price=:price,date=:date,\
-                argus=:argus,last_argus=:last_argus,fact=:fact,photo=:photo,serial=:serial,comment=:comment,shop=:shop where id=:id"
+            sql = f"update {TABLE} set ref=:ref,quantity=:quantity,price=:price,date=:date,\
+                argus=:argus,last_argus=:last_argus,invoice=:invoice,picture=:picture,serial=:serial,comment=:comment,shop=:shop where id=:id"
             params = {
                 'id': p_id,
                 'ref': ref,
-                'nb': nb,
+                'quantity': quantity,
                 'price': price,
                 'date': date,
                 'argus': argus,
                 'last_argus': last_argus,
-                'fact': fact,
-                'photo': photo,
+                'invoice': invoice,
+                'picture': picture,
                 'serial': serial,
                 'comment': comment,
                 'shop': shop
             }
             curseur.execute(sql, params)
             cnx.commit()
-            logging.warning(f"{text['logging_update_info']} {text['column1']}: {p_id} {text['column11']}: {p_type}, {text['column2']}: {brand}, {text['column3']}: {ref}, {text['column4']}: {nb}, {text['column5']}: {price}, {text['column6']}: {date}, {text['column7']}: {argus}, {text['column8']}: {last_argus}, {text['column9']}: {fact}, {text['column10']}: {photo}, {text['column11']}: {serial}, {text['column12']}: {comment}, {text['column13']}: {shop}")
+            logging.warning(f"{text['logging_update_info']} {text['column1']}: {p_id} {text['column11']}: {p_type}, {text['column2']}: {brand}, {text['column3']}: {ref}, {text['column4']}: {quantity}, {text['column5']}: {price}, {text['column6']}: {date}, {text['column7']}: {argus}, {text['column8']}: {last_argus}, {text['column9']}: {invoice}, {text['column10']}: {picture}, {text['column11']}: {serial}, {text['column12']}: {comment}, {text['column13']}: {shop}")
         except Exception as e:
             cnx.rollback()
             logging.error(e)
@@ -271,7 +250,7 @@ def delete(p_id:int):
         sql = f"delete from {TABLE} where id={p_id}"
         curseur.execute(sql)
         cnx.commit()
-        logging.warning(f"Suppression de l'id {p_id}")
+        logging.warning(f"{text['logging_delete_info']} id : {p_id}")
     except Exception as e:
         cnx.rollback()
         logging.error(e)
@@ -319,7 +298,6 @@ def dump(download:bool=True) -> None:
             if line.startswith('INSERT INTO "gear"'):
                 with open(DUMP_FILE, mode='a') as f:
                     f.write('%s\n' % line)
-                    # f.write(f'{line}\n')
         if download == True:
             if os.path.exists(DUMP_FILE):
                 ui.download(DUMP_FILE)
@@ -329,7 +307,7 @@ def dump(download:bool=True) -> None:
         cnx.close()
 
 # if __name__ == '__main__':
-#     #insert('Fender','Telecaster',1,849.99,'12/05/2005','facture_tele.pdf','photo_tele.jpg')
+#     #insert('Fender','Telecaster',1,849.99,'12/05/2005','facture_tele.pdf','picture_tele.jpg')
 #     #update(1,'Shure','SM7B',1,199,'06/06/2010')
 #     #update_argus(2,1950.45,'01/07/2024')
 #     update_argus(63, 170)

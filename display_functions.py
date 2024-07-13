@@ -1,16 +1,16 @@
-from constantes import FACT_DIR, PHOTO_DIR, FACT_TMP, PHOTO_TMP, FACT_LINK, PHOTO_LINK
+from constantes import INVOICE_DIR, PICTURE_DIR, INVOICE_TMP, PICTURE_TMP, INVOICE_LINK, PICTURE_LINK
 from languages import *
-from sql_functions import get_table, update, insert, delete, get_all_brand, get_all_type, dump, export
+from sql_functions import get_table, update, insert, delete, get_all, dump, export
 from class_p import Product
 from nicegui import ui, app
 import os, subprocess
 
-if not os.path.exists(FACT_DIR):
+if not os.path.exists(INVOICE_DIR):
     with subprocess.Popen(['mount', '-a']) as p:
         p.wait()
 
-app.add_static_files('/factures', FACT_DIR)
-app.add_static_files('/photos', PHOTO_DIR)
+app.add_static_files(f'/{INVOICE_LINK}', INVOICE_DIR)
+app.add_static_files(f'/{PICTURE_LINK}', PICTURE_DIR)
 
 def argus_color(price:float, argus:float) -> str:
     """Change argus color after comparison with product price
@@ -39,7 +39,7 @@ def gears_rows() -> tuple:
         tuple(list,float,float): Data from database (list), total price (float), total argus (float)
     """
     total = 0
-    total_argus = 0
+    argus_total = 0
     data=[]
     gears = get_table()
     for gear in gears:
@@ -48,26 +48,26 @@ def gears_rows() -> tuple:
         else:
             shop = '❌'
         if gear[8]:
-            fact_row = os.path.join(FACT_LINK,gear[8])
-            fact = f'{fact_row}'
+            invoice_row = os.path.join(INVOICE_LINK,gear[8])
+            invoice = f'{invoice_row}'
         else:
-            fact = ''
+            invoice = ''
         if gear[9]:
-            photo_row = os.path.join(PHOTO_LINK,gear[9])
-            photo = f'{photo_row}'
+            picture_row = os.path.join(PICTURE_LINK,gear[9])
+            picture = f'{picture_row}'
         else:
-            photo = ''
+            picture = ''
         g = {
                 'id': gear[0],
                 'brand': gear[1],
                 'ref': gear[2],
-                'nb': gear[3],
+                'quantity': gear[3],
                 'price': gear[4],
                 'date': gear[5],
                 'argus': gear[6],
                 'last_argus': gear[7],
-                'fact': fact,
-                'photo': photo,
+                'invoice': invoice,
+                'picture': picture,
                 'type': gear[10],
                 'serial': gear[11],
                 'comment': gear[12],
@@ -77,9 +77,9 @@ def gears_rows() -> tuple:
         data.append(g)
         total += gear[4] * gear[3]
         if gear[6]:
-            total_argus += gear[6] * gear[3]
+            argus_total += gear[6] * gear[3]
 
-    return data, total, total_argus
+    return data, total, argus_total
 
 def display() -> None:
     """Main display function
@@ -89,21 +89,21 @@ def display() -> None:
     data = gears_rows()[0]
     total = gears_rows()[1]
     total_str = round(total,2)
-    total_argus = gears_rows()[2]
-    total_argus_str = round(total_argus,2)
-    color = argus_color(total, total_argus)
+    argus_total = gears_rows()[2]
+    argus_total_str = round(argus_total,2)
+    color = argus_color(total, argus_total)
     
     columns = [
         {'name': 'id', 'label': text['column1'], 'field': 'id', 'align': 'left'},
         {'name': 'brand', 'label': text['column2'], 'field': 'brand', 'sortable': True, 'align': 'left'},
         {'name': 'ref', 'label': text['column3'], 'field': 'ref', 'sortable': True, 'align': 'left'},
-        {'name': 'nb', 'label': text['column4'], 'field': 'nb', 'sortable': True, 'align': 'left'},
+        {'name': 'quantity', 'label': text['column4'], 'field': 'quantity', 'sortable': True, 'align': 'left'},
         {'name': 'price', 'label': text['column5'], 'field': 'price', 'sortable': True, 'align': 'left', ':format': 'value => value + " €"'},
         {'name': 'date', 'label': text['column6'], 'field': 'date', 'align': 'left'},
         {'name': 'argus', 'label': text['column7'], 'field': 'argus', 'align': 'left', ':format': 'value => value + " €"'},      
         {'name': 'last_argus', 'label': text['column8'], 'field': 'last_argus', 'align': 'left'},      
-        {'name': 'fact', 'label': text['column9'], 'field': 'fact', 'align': 'left'},      
-        {'name': 'photo', 'label': text['column10'], 'field': 'photo', 'align': 'left'},      
+        {'name': 'invoice', 'label': text['column9'], 'field': 'invoice', 'align': 'left'},      
+        {'name': 'picture', 'label': text['column10'], 'field': 'picture', 'align': 'left'},      
         {'name': 'type', 'label': text['column11'], 'field': 'type', 'sortable': True, 'align': 'left'},      
         {'name': 'serial', 'label': text['column12'], 'field': 'serial', 'align': 'left'},      
         {'name': 'comment', 'label': text['column13'], 'field': 'comment', 'align': 'left'},      
@@ -118,7 +118,7 @@ def display() -> None:
                 for column in columns:
                     if column['name'] != 'value' and column['name'] != 'shop':
                         if column['name'] == 'id' or column['name'] == 'price' or column['name'] == 'date' or column['name'] == 'argus' \
-                            or column['name'] == 'nb' or column['name'] == 'last_argus' or column['name'] == 'fact' or column['name'] == 'photo' \
+                            or column['name'] == 'quantity' or column['name'] == 'last_argus' or column['name'] == 'invoice' or column['name'] == 'picture' \
                                 or column['name'] == 'type' or column['name'] == 'serial' or column['name'] == 'comment' or column['name'] == 'shop_icon':
                             ui.switch(column['label'], value=False, on_change=lambda e, column=column: toggle(table, column, e.value))
                         else:
@@ -129,20 +129,20 @@ def display() -> None:
         f = ui.input('Filtre')
         with ui.grid().classes('gap-0'):
             ui.chip(f"{text['total']} {total_str}€", removable=True, color='blue-2')
-            ui.chip(f"{text['argus_total']} {total_argus_str}€", removable=True, color='blue-2').classes(f'text-{color}-700')
+            ui.chip(f"{text['argus_total']} {argus_total_str}€", removable=True, color='blue-2').classes(f'text-{color}-700')
     with ui.table(columns, rows=data).classes('w-full bg-gradient-to-r from-stone-100 to-zinc-200').bind_filter_from(f, 'value') as table:
         for column in columns:
-            if column['name'] == 'id' or column['name'] == 'date' or column['name'] == 'price' or column['name'] == 'argus' or column['name'] == 'nb'\
-                or column['name'] == 'last_argus' or column['name'] == 'fact' or column['name'] == 'photo' or column['name'] == 'type'\
+            if column['name'] == 'id' or column['name'] == 'date' or column['name'] == 'price' or column['name'] == 'argus' or column['name'] == 'quantity'\
+                or column['name'] == 'last_argus' or column['name'] == 'invoice' or column['name'] == 'picture' or column['name'] == 'type'\
                     or column['name'] == 'serial' or column['name'] == 'comment' or column['name'] == 'shop' or column['name'] == 'shop_icon':
                 column['classes'] = 'hidden'
                 column['headerClasses'] = 'hidden'
-        table.add_slot('body-cell-fact', '''
+        table.add_slot('body-cell-invoice', '''
             <q-td :props="props">
                 <a :href="props.value" target=_blank>{{ props.value }}</a>
             </q-td>
         ''')
-        table.add_slot('body-cell-photo', '''
+        table.add_slot('body-cell-picture', '''
             <q-td :props="props">
                 <a :href="props.value" target=_blank>{{ props.value }}</a>
             </q-td>
@@ -170,7 +170,7 @@ def toggle(table:object, column: dict, visible: bool) -> None:
 
 
 def rec(e:object, path:str) -> None:
-    """Write bills and pictures filename
+    """Write invoices and pictures filename
 
     Args:
         e (object): Object uploaded
@@ -181,26 +181,26 @@ def rec(e:object, path:str) -> None:
     file_dst = os.path.join(path,e.name)
     with open(file_dst, mode="wb") as g:
         g.write(file_as_bytes)
-    if path == FACT_DIR:
-        with open(FACT_TMP, mode='w') as f:
+    if path == INVOICE_DIR:
+        with open(INVOICE_TMP, mode='w') as f:
             f.write(e.name)
-    if path == PHOTO_DIR:
-        with open(PHOTO_TMP, mode='w') as f:
+    if path == PICTURE_DIR:
+        with open(PICTURE_TMP, mode='w') as f:
             f.write(e.name)
 
 def clean_last() -> None:
     """Clean last tmp files written
     """
-    if os.path.exists(FACT_TMP):
-        os.remove(FACT_TMP)
-    if os.path.exists(PHOTO_TMP):
-        os.remove(PHOTO_TMP)
+    if os.path.exists(INVOICE_TMP):
+        os.remove(INVOICE_TMP)
+    if os.path.exists(PICTURE_TMP):
+        os.remove(PICTURE_TMP)
 
 def add_product() -> None:
     """Display to add a product
     """
-    all_type = get_all_type()
-    all_brand = get_all_brand()
+    all_type = get_all('type')
+    all_brand = get_all('brand')
 
     with ui.dialog() as dialog, ui.card():
         clean_last()
@@ -226,8 +226,8 @@ def add_product() -> None:
                             ui.button(text['dialog_calendar_close'], on_click=menu.close).props('flat')
                 with last_argus.add_slot('append'):
                     ui.icon('edit_calendar').on('click', menu.open).classes('cursor-pointer')
-            ui.upload(label=text['dialog_bill'], auto_upload=True, on_upload=lambda e: rec(e, FACT_DIR)).classes('ml-2 w-40')
-            ui.upload(label=text['dialog_picture'], auto_upload=True, on_upload=lambda e: rec(e, PHOTO_DIR)).classes('ml-2 w-40')
+            ui.upload(label=text['dialog_invoice'], auto_upload=True, on_upload=lambda e: rec(e, INVOICE_DIR)).classes('ml-2 w-40')
+            ui.upload(label=text['dialog_picture'], auto_upload=True, on_upload=lambda e: rec(e, PICTURE_DIR)).classes('ml-2 w-40')
             with ui.grid():
                 serial = ui.input(label=text['dialog_serial'])
                 shop = ui.checkbox(text['dialog_shop'])
@@ -247,16 +247,16 @@ def edit_product(msg:dict) -> None:
 
     with ui.dialog() as dialog, ui.card():
         clean_last()
-        fact_clean = str(msg['row']['fact']).replace('factures/', '').replace('factures\\','')
-        photo_clean = str(msg['row']['photo']).replace('photos/', '').replace('photos\\', '')
-        with open(FACT_TMP, mode='w') as f:
+        fact_clean = str(msg['row']['invoice']).replace(f'{INVOICE_LINK}/', '').replace(f'{INVOICE_LINK}\\','')
+        photo_clean = str(msg['row']['picture']).replace(f'{PICTURE_LINK}/', '').replace(f'{PICTURE_LINK}\\', '')
+        with open(INVOICE_TMP, mode='w') as f:
             f.seek(0)
             f.write(fact_clean)
-        with open(PHOTO_TMP, mode='w') as g:
+        with open(PICTURE_TMP, mode='w') as g:
             g.seek(0)
             g.write(photo_clean)
 
-        prod = Product(msg['row']['id'], msg['row']['brand'], msg['row']['ref'], msg['row']['nb'], msg['row']['price'], msg['row']['date'],\
+        prod = Product(msg['row']['id'], msg['row']['brand'], msg['row']['ref'], msg['row']['quantity'], msg['row']['price'], msg['row']['date'],\
         msg['row']['argus'], msg['row']['last_argus'], msg['row']['type'], msg['row']['serial'], msg['row']['comment'], msg['row']['shop'], fact_clean, photo_clean)
         color = argus_color(prod.price, prod.argus)
         if prod.shop == 1:
@@ -270,7 +270,7 @@ def edit_product(msg:dict) -> None:
             ui.label(prod.p_type)
             ui.label(prod.brand)
             ref = ui.input(label=text['dialog_ref'], value=prod.ref)
-            nb = ui.number(label=text['dialog_quantity'], value=prod.nb)
+            nb = ui.number(label=text['dialog_quantity'], value=prod.quantity)
             price = ui.number(label=text['dialog_price'], value=prod.price)
             with ui.input(text['dialog_purchase_date'], value=prod.date, placeholder='DD-MM-YYYY') as date:
                 with ui.menu().props('no-parent-event') as menu:
@@ -287,8 +287,8 @@ def edit_product(msg:dict) -> None:
                             ui.button(text['dialog_calendar_close'], on_click=menu.close).props('flat')
                 with last_argus.add_slot('append'):
                     ui.icon('edit_calendar').on('click', menu.open).classes('cursor-pointer')          
-            ui.upload(label=f'{prod.fact}', auto_upload=True, on_upload=lambda e: rec(e, FACT_DIR)).classes('w-40')
-            ui.upload(label=f'{prod.photo}', auto_upload=True, on_upload=lambda e: rec(e, PHOTO_DIR)).classes('w-40')
+            ui.upload(label=f'{prod.invoice}', auto_upload=True, on_upload=lambda e: rec(e, INVOICE_DIR)).classes('w-40')
+            ui.upload(label=f'{prod.picture}', auto_upload=True, on_upload=lambda e: rec(e, PICTURE_DIR)).classes('w-40')
             with ui.grid():
                 serial = ui.input(label=text['dialog_serial'], value=prod.serial)
                 shop = ui.checkbox(text['dialog_shop'], value=shop_check)              

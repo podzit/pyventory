@@ -1,5 +1,6 @@
 from sql_functions import dump
-from constantes import this_folder
+from constantes import this_folder, logging
+from languages import *
 import os, datetime
 
 today = (datetime.datetime.today()).strftime('%d-%m-%Y')
@@ -11,12 +12,9 @@ if os.path.exists(db_file):
     os.rename(db_file, f'{db_file}_{today}')
 try: 
     dump(False)
-    with open('/var/log/save_db_inv_stud.log', mode='a') as f:
-        f.write(f"{today} : Sauvegarde réussie\n")
+    logging.warning(f"{text['auto_save_ok']}")
 except Exception as e:
-    with open('/var/log/save_db_inv_stud.log', mode='a') as f:
-        f.write(f"{today} : Problème de sauvegarde avec l'erreur quivante : {e}\n")
+    logging.error(f"{text['auto_save_failed']} {e}")
 if os.path.exists(old_db_file):
     os.remove(old_db_file)
-    with open('/var/log/save_db_inv_stud.log', mode='a') as f:
-        f.write(f"{today} : Suppression de la sauvegrde datant de 15 jours\n")
+    logging.warning(f"{text['old_backup_removed']}")
