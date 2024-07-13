@@ -49,6 +49,31 @@ You need a db.dump file in the same directory. Create this file on web GUI or wi
 python3 ./import.py
 ```
 
+## Start as a service
+
+For Ubuntu create pyventory.service in /etc/systemd/system/ with this lines:
+
+```shell
+[Unit]
+Description=Pyventory
+After=syslog.target network.target
+
+[Service]
+WorkingDirectory=[your_working_directory]
+ExecStart=python3.10 [path_to_main.py]
+
+Restart=always
+RestartSec=120
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Then reload daemon:
+```shell
+sudo systemctl daemon-reload
+```
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
