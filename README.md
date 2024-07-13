@@ -70,8 +70,16 @@ WantedBy=multi-user.target
 ```
 
 Then reload daemon:
+
 ```shell
 sudo systemctl daemon-reload
+```
+
+After that you can start stop and status with:
+```shell
+sudo service pyventory start
+sudo service pyventory status
+sudo service pyventory stop
 ```
 
 ## Contributing
