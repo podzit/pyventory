@@ -34,8 +34,16 @@ python3 ./create_db.py
 python3 ./main.py
 ```
 
+## Auto backup
+
+Use save_db.py in your cron to auto backup 
+
+```python
+python3 ./save_db.py
+```
+
 ## Import data
-You need a db.dump file in the same directory
+You need a db.dump file in the same directory. Create this file by gui or with save_db.py
 
 ```python
 python3 ./import.py
