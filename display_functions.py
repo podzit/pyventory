@@ -3,11 +3,7 @@ from languages import *
 from sql_functions import get_table, update, insert, delete, get_all, dump, export
 from class_p import Product
 from nicegui import ui, app
-import os, subprocess
-
-if not os.path.exists(INVOICE_DIR):
-    with subprocess.Popen(['mount', '-a']) as p:
-        p.wait()
+import os
 
 app.add_static_files(f'/{INVOICE_LINK}', INVOICE_DIR)
 app.add_static_files(f'/{PICTURE_LINK}', PICTURE_DIR)
