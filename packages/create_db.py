@@ -1,12 +1,14 @@
-from const import logging, DB
-from languages import *
-import sqlite3, os
+import sqlite3, logging
 
-def create_db():
+def create_db(db:str, text:dict) -> None:
     """ Create database
+
+    Args:
+        db (str): Database path
+        text (dict): Text from languages.py
     """
     try:
-        cnx = sqlite3.connect(DB)
+        cnx = sqlite3.connect(db)
         curseur = cnx.cursor()
         curseur.execute(
             """
@@ -33,10 +35,3 @@ def create_db():
     finally:
         curseur.close()
         cnx.close()
-
-if __name__ == "__main__":
-    if not os.path.exists(DB):
-        logging.warning(text['database_created'])
-        create_db()
-    else:
-        logging.warning(text['database_exists'])

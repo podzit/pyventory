@@ -1,8 +1,6 @@
-from const import DB, TABLE, logging, DUMP_FILE
-from languages import *
-import sqlite3, os
+import sqlite3, logging
 
-def import_data():
+def import_data(DB:str, TABLE:str, DUMP_FILE:str, text:dict, IMPORT_TMP:str) -> None:
     """To import data from dump file to database
     """
     params = []
@@ -51,6 +49,8 @@ def import_data():
                 }
                 curseur.execute(sql, params)
                 logging.warning(text['import_data_ok'])
+                with open(IMPORT_TMP, mode='w') as f:
+                    f.write('1')
                 cnx.commit()
             except Exception as e:
                 cnx.rollback()
@@ -58,7 +58,3 @@ def import_data():
             finally:
                 curseur.close()
                 cnx.close()
-
-if __name__ == "__main__":
-    if os.path.exists(DUMP_FILE):
-        import_data()

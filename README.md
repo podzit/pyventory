@@ -11,21 +11,18 @@ pip install nicegui
 ```
 
 ## Customize your variables
-Edit const.py to custom your environnement:
+Edit packages/env.py to custom your environnement:
 ```python
-HOST = 'your_ip_server'
+HOST = 'your_server_ip'
 PORT = 8091 # Or another custom port
 INVOICE_LINK = 'invoices' # Name of directory for invoices
 PICTURE_LINK = 'pictures' # Name of directory for pictures
 LANGUAGE = 'fr' # 'fr' or 'eng'
+import_dump = True # Do you want to import dump file ?
 ```
 
-## Database creation
-make a copy or rename pyventory-template.sqlite3 to pyventory.sqlite3 or use create_db.py
-
-```python
-python3 ./create_db.py
-```
+## First run
+First launch of main.py create database, invoices and pictures directories and import data from existing packages/dump file if you set import_dump to True in packages/env.py
 
 ## Start app
 
@@ -36,17 +33,16 @@ python3 ./main.py
 
 ## Auto backup
 
-Use save_db.py in your cron to auto backup 
+Use save_db.py in your cron to auto backup. 
 
 ```python
 python3 ./save_db.py
 ```
 
-## Import data
-You need a db.dump file in the same directory. Create this file on web GUI or with save_db.py
+Change days number as you want in this line of save_db.py to keep more or less dump files:
 
 ```python
-python3 ./import.py
+old = ((datetime.datetime.today())-datetime.timedelta(days=15)).strftime('%d-%m-%Y')
 ```
 
 ## Start as a service
@@ -82,9 +78,11 @@ sudo service pyventory status
 sudo service pyventory stop
 ```
 
+## Import data once again ?
+
+Stop app, remove packages/import_tmp file, set import_dump to True in packages/env.py and start app.
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.

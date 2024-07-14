@@ -1,7 +1,6 @@
-from const import DB, TABLE, logging, DUMP_FILE, EXPORT_FILE, INVOICE_TMP, PICTURE_TMP
-from languages import *
+from packages.env import DB, TABLE, DUMP_FILE, EXPORT_FILE, INVOICE_TMP, PICTURE_TMP, text
 from nicegui import ui
-import sqlite3, os, datetime
+import sqlite3, os, datetime, logging
 
 def get_table() -> list:
     """Get data from 'gear' table

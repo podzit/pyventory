@@ -1,12 +1,8 @@
-from const import INVOICE_DIR, PICTURE_DIR, INVOICE_TMP, PICTURE_TMP, INVOICE_LINK, PICTURE_LINK
-from languages import *
-from sql_functions import get_table, update, insert, delete, get_all, dump, export
-from class_p import Product
+from packages.env import INVOICE_DIR, PICTURE_DIR, INVOICE_TMP, PICTURE_TMP, INVOICE_LINK, PICTURE_LINK, text
+from packages.sql_functions import get_table, update, insert, delete, get_all, dump, export
+from packages.class_p import Product
 from nicegui import ui, app
 import os
-
-app.add_static_files(f'/{INVOICE_LINK}', INVOICE_DIR)
-app.add_static_files(f'/{PICTURE_LINK}', PICTURE_DIR)
 
 def argus_color(price:float, argus:float) -> str:
     """Change argus color after comparison with product price

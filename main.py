@@ -1,6 +1,9 @@
+from packages.env import HOST, PORT, INVOICE_DIR, PICTURE_DIR, DB, text, import_dump, DUMP_FILE, IMPORT_TMP, TABLE, INVOICE_LINK, PICTURE_LINK
+from packages.init import init_function
+from packages.display_functions import display
 from nicegui import ui
-from display_functions import display
-from const import HOST, PORT
+
+init_function(INVOICE_DIR, PICTURE_DIR, DB, text, import_dump, DUMP_FILE, IMPORT_TMP, TABLE, INVOICE_LINK, PICTURE_LINK)
 
 ui.query('body').classes('bg-gray-100')
 
