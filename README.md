@@ -2,7 +2,7 @@
 
 Pyventory is a Python app to inventory your equipment.
 
-## Installation
+## Install
 
 Need python 3.10 or higher and [nicegui](https://nicegui.io/) installed.
 
