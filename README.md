@@ -10,8 +10,8 @@ Need python 3.10 or higher and [nicegui](https://nicegui.io/) installed.
 pip install nicegui
 ```
 
-## Customize your variables
-Edit packages/env.py to custom your environnement:
+## Customize your environment
+Edit packages/env.py to custom your environment:
 ```python
 HOST = 'your_server_ip'
 PORT = 8091 # Or another custom port
