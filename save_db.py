@@ -1,5 +1,5 @@
 from sql_functions import dump
-from constantes import this_folder, logging
+from const import this_folder, logging
 from languages import *
 import os, datetime
 

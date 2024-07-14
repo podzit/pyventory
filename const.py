@@ -21,6 +21,6 @@ LANGUAGE = 'fr'
 logging.basicConfig(
     filename=os.path.join(this_folder,'pyventory.log'),
     level= logging.WARNING,
-    format="%(asctime)s - %(levelname)s - %(filename)s: %(message)s",
+    format="%(asctime)s - %(levelname)s - %(filename)s: %(message)s\n",
     datefmt="%d/%m/%Y - %H:%M"
 )

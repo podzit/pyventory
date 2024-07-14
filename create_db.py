@@ -1,4 +1,4 @@
-from constantes import logging, DB
+from const import logging, DB
 from languages import *
 import sqlite3, os
 

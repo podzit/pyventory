@@ -1,6 +1,6 @@
 from nicegui import ui
 from display_functions import display
-from constantes import HOST, PORT
+from const import HOST, PORT
 
 ui.query('body').classes('bg-gray-100')
 

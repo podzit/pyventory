@@ -1,4 +1,4 @@
-from constantes import DB, TABLE, logging, DUMP_FILE, EXPORT_FILE, INVOICE_TMP, PICTURE_TMP
+from const import DB, TABLE, logging, DUMP_FILE, EXPORT_FILE, INVOICE_TMP, PICTURE_TMP
 from languages import *
 from nicegui import ui
 import sqlite3, os, datetime
@@ -304,11 +304,4 @@ def dump(download:bool=True) -> None:
     except Exception as e:
         logging.error(e)
     finally:
-        cnx.close()
-
-# if __name__ == '__main__':
-#     #insert('Fender','Telecaster',1,849.99,'12/05/2005','facture_tele.pdf','picture_tele.jpg')
-#     #update(1,'Shure','SM7B',1,199,'06/06/2010')
-#     #update_argus(2,1950.45,'01/07/2024')
-#     update_argus(63, 170)
-    
+        cnx.close()    

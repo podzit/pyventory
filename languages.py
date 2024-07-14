@@ -1,4 +1,4 @@
-from constantes import LANGUAGE
+from const import LANGUAGE
 
 if LANGUAGE == 'fr':
     text = {

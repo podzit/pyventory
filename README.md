@@ -11,7 +11,7 @@ pip install nicegui
 ```
 
 ## Customize your variables
-Edit constantes.py to custom your environnement:
+Edit const.py to custom your environnement:
 ```python
 HOST = 'your_ip_server'
 PORT = 8091 # Or another custom port

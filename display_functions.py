@@ -1,4 +1,4 @@
-from constantes import INVOICE_DIR, PICTURE_DIR, INVOICE_TMP, PICTURE_TMP, INVOICE_LINK, PICTURE_LINK
+from const import INVOICE_DIR, PICTURE_DIR, INVOICE_TMP, PICTURE_TMP, INVOICE_LINK, PICTURE_LINK
 from languages import *
 from sql_functions import get_table, update, insert, delete, get_all, dump, export
 from class_p import Product

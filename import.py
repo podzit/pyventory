@@ -1,4 +1,4 @@
-from constantes import DB, TABLE, logging, DUMP_FILE
+from const import DB, TABLE, logging, DUMP_FILE
 from languages import *
 import sqlite3, os
 
