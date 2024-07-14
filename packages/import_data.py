@@ -1,7 +1,14 @@
 import sqlite3, logging
 
 def import_data(DB:str, TABLE:str, DUMP_FILE:str, text:dict, IMPORT_TMP:str) -> None:
-    """To import data from dump file to database
+    """To import data from dump file
+
+    Args:
+        DB (str): Database path
+        TABLE (str): Table name
+        DUMP_FILE (str): Dump file path
+        text (dict): Text dictionnary
+        IMPORT_TMP (str): Import temp file
     """
     params = []
     with open(DUMP_FILE, mode='r') as f:

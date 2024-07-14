@@ -5,6 +5,20 @@ import os, logging
 
 
 def init_function(INVOICE_DIR: str, PICTURE_DIR:str, DB:str, text:dict, import_dump:bool, DUMP_FILE:str, IMPORT_TMP:str, TABLE:str, INVOICE_LINK:str, PICTURE_LINK:str) -> None:
+    """Directories, database creation with import dump file
+
+    Args:
+        INVOICE_DIR (str): Invoices directory
+        PICTURE_DIR (str): Pictures directory
+        DB (str): Database path
+        text (dict): Text dictionnary
+        import_dump (bool): True to import dump file
+        DUMP_FILE (str): Dump file path
+        IMPORT_TMP (str): Dump temp file
+        TABLE (str): Table in database
+        INVOICE_LINK (str): Invoices link
+        PICTURE_LINK (str): Pictures link
+    """
     # Creating invoices and pictures directories
     dir_list = [INVOICE_DIR, PICTURE_DIR]
     for dir in dir_list:
