@@ -144,7 +144,7 @@ def insert(p_type, brand, ref:str, price:float, date:str, quantity:int, argus:st
             }
             curseur.execute(sql, params)
             cnx.commit()
-            logging.warning(f"{text['logging_add_info']} {text['column11']}: {p_type}, {text['column2']}: {brand}, {text['column3']}: {ref}, {text['column4']}: {quantity}, {text['column5']}: {price}, {text['column6']}: {date}, {text['column7']}: {argus}, {text['column8']}: {last_argus}, {text['column9']}: {invoice}, {text['column10']}: {picture}, {text['column11']}: {serial}, {text['column12']}: {comment}, {text['column13']}: {shop}")
+            logging.warning(f"{text['logging_add_info']} {text['column11']}: {p_type}, {text['column2']}: {brand}, {text['column3']}: {ref}, {text['column4']}: {quantity}, {text['column5']}: {price}, {text['column6']}: {date}, {text['column7']}: {argus}, {text['column8']}: {last_argus}, {text['column9']}: {invoice}, {text['column10']}: {picture}, {text['column12']}: {serial}, {text['column13']}: {comment}, {text['column14']}: {shop}")
         except Exception as e:
             cnx.rollback()
             logging.error(e)
@@ -201,7 +201,7 @@ def update(p_id:int, p_type:str, brand:str, ref:str, quantity:int, price:float, 
             }
             curseur.execute(sql, params)
             cnx.commit()
-            logging.warning(f"{text['logging_update_info']} {text['column1']}: {p_id} {text['column11']}: {p_type}, {text['column2']}: {brand}, {text['column3']}: {ref}, {text['column4']}: {quantity}, {text['column5']}: {price}, {text['column6']}: {date}, {text['column7']}: {argus}, {text['column8']}: {last_argus}, {text['column9']}: {invoice}, {text['column10']}: {picture}, {text['column11']}: {serial}, {text['column12']}: {comment}, {text['column13']}: {shop}")
+            logging.warning(f"{text['logging_update_info']} {text['column1']}: {p_id}, {text['column11']}: {p_type}, {text['column2']}: {brand}, {text['column3']}: {ref}, {text['column4']}: {quantity}, {text['column5']}: {price}, {text['column6']}: {date}, {text['column7']}: {argus}, {text['column8']}: {last_argus}, {text['column9']}: {invoice}, {text['column10']}: {picture}, {text['column11']}: {p_type}, {text['column12']}: {serial}, {text['column13']}: {comment}, {text['column14']}: {shop}")
         except Exception as e:
             cnx.rollback()
             logging.error(e)
