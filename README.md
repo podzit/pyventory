@@ -78,6 +78,12 @@ sudo service pyventory status
 sudo service pyventory stop
 ```
 
+If you want to start service at boot :
+
+```shell
+sudo systemctl enable pyventory.service
+```
+
 ## Import data once again ?
 
 Stop app, remove packages/import_tmp file, set import_dump to True in packages/env.py and start app.
