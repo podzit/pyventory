@@ -10,6 +10,12 @@ Need python 3.10 or higher and [nicegui](https://nicegui.io/) installed.
 pip install nicegui
 ```
 
+Init and clone:
+```shell
+git init
+git clone https://github.com/podzit/pyventory.git
+```
+
 ## Customize your environment
 Edit packages/env.py to custom your environment:
 ```python
