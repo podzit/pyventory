@@ -5,7 +5,7 @@ this_folder = os.path.dirname(__file__)
 DB = os.path.join(this_folder, 'pyventory.sqlite3')
 TABLE = 'gear'
 # Server IP
-HOST = '192.168.1.2'
+HOST = 'your_server_ip'
 PORT = 8091
 INVOICE_LINK = 'invoices'
 PICTURE_LINK = 'pictures'
