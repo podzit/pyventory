@@ -65,8 +65,7 @@ def lang(LANGUAGE:str) -> dict:
         "auto_save_failed": "La sauvegarde de la base de donnée a échouée avec l'erreur suivante :",
         "old_backup_removed": "La sauvegarde suivante a été supprimée :",
         "import_data_ok": "Import des données effectué !",
-        "import_data_failed": "Import des données échoué avec l'erreur suivante :",
-        "shutdown": "Arrêter"
+        "import_data_failed": "Import des données échoué avec l'erreur suivante :"
         }
     if LANGUAGE == 'eng':
         text = {
@@ -126,7 +125,6 @@ def lang(LANGUAGE:str) -> dict:
         "auto_save_failed": "Save database failed with error :",
         "old_backup_removed": "This backup file was removed :",
         "import_data_ok": "Data imported successfully !",
-        "import_data_failed": "Import failed with error :",
-        "shutdown": "Shutdown"
+        "import_data_failed": "Import failed with error :"
         }
     return text
