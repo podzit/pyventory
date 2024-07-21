@@ -38,6 +38,8 @@ First launch of main.py create database, invoices and pictures directories and i
 python3 ./main.py
 ```
 
+And go to http://your_server_ip:8091/main
+
 ## Auto backup
 
 Use save_db.py in your daily cron to auto backup. 
