@@ -63,7 +63,7 @@ def lang(LANGUAGE:str) -> dict:
         "database_creation_failed": "La création de la base de donnée a échoué avec l'errueur suivante :",
         "auto_save_ok": "Sauvegarde de la base de donnée réussie !",
         "auto_save_failed": "La sauvegarde de la base de donnée a échouée avec l'erreur suivante :",
-        "old_backup_removed": "La sauvegarde datant de 15 ajours a été supprimée",
+        "old_backup_removed": "La sauvegarde suivante a été supprimée :",
         "import_data_ok": "Import des données effectué !",
         "import_data_failed": "Import des données échoué avec l'erreur suivante :",
         "shutdown": "Arrêter"
@@ -124,7 +124,7 @@ def lang(LANGUAGE:str) -> dict:
         "database_creation_failed": "Database creation failed with error :",
         "auto_save_ok": "Database saved successfully !",
         "auto_save_failed": "Save database failed with error :",
-        "old_backup_removed": "15 days old backup file was removed",
+        "old_backup_removed": "This backup file was removed :",
         "import_data_ok": "Data imported successfully !",
         "import_data_failed": "Import failed with error :",
         "shutdown": "Shutdown"

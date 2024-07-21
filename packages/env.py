@@ -21,6 +21,7 @@ PICTURE_DIR = os.path.join(LOCAL_DIR,PICTURE_LINK)
 import_dump = True
 # 'fr' or 'eng'
 LANGUAGE = 'fr'
+BACKUP_DAYS = 15
 
 text = lang(LANGUAGE)
 
