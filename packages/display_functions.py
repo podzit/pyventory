@@ -73,6 +73,13 @@ def gears_rows() -> tuple:
 
     return data, total, argus_total
 
+
+@ui.page('/main')
+def main_page():
+    """Multi instance function
+    """
+    display()
+
 def display() -> None:
     """Main display function
     
