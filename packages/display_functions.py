@@ -85,10 +85,8 @@ def display() -> None:
     
     """
 
-    data = gears_rows()[0]
-    total = gears_rows()[1]
+    data, total, argus_total = gears_rows()[0], gears_rows()[1], gears_rows()[2]
     total_str = round(total,2)
-    argus_total = gears_rows()[2]
     argus_total_str = round(argus_total,2)
     color = argus_color(total, argus_total)
     
