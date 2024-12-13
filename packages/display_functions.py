@@ -127,7 +127,7 @@ def display() -> None:
         with ui.grid().classes('gap-0'):
             ui.chip(f"{text['total']} {total_str}€", removable=True, color='blue-2')
             ui.chip(f"{text['argus_total']} {argus_total_str}€", removable=True, color='blue-2').classes(f'text-{color}-700')
-    with ui.table(columns, rows=data).classes('w-full bg-gradient-to-r from-stone-100 to-zinc-200').bind_filter_from(f, 'value') as table:
+    with ui.table(columns=columns, rows=data).classes('w-full bg-gradient-to-r from-stone-100 to-zinc-200').bind_filter_from(f, 'value') as table:
         for column in columns:
             if column['name'] == 'id' or column['name'] == 'date' or column['name'] == 'price' or column['name'] == 'argus' or column['name'] == 'quantity'\
                 or column['name'] == 'last_argus' or column['name'] == 'invoice' or column['name'] == 'picture' or column['name'] == 'type'\
