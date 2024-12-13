@@ -18,7 +18,7 @@ IMPORT_TMP = os.path.join(this_folder, 'import_tmp')
 INVOICE_DIR = os.path.join(LOCAL_DIR,INVOICE_LINK)
 PICTURE_DIR = os.path.join(LOCAL_DIR,PICTURE_LINK)
 # True or false
-import_dump = False
+import_dump = True
 # 'fr' or 'eng'
 LANGUAGE = 'fr'
 BACKUP_DAYS = 15
